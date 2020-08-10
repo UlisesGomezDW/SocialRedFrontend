@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "node"
+warnings_are_errors: false
+cache:
+  directories:
+    - node_modules
+install:
+  - npm install
+script:
+  - npm run build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  commit_message: "Deploy release ${TRAVIS_TAG}"
+on:
+  branch: master
