@@ -11,11 +11,16 @@ export function addCategory(data){
 }
 
 export function updateCategory(data, _id){
-    axios.put(URL_CATEGORY+_id, data)
-    .then(response=>{
-        message.success("Categoría editada!");
-    })
-    .catch(error=>message.error(error));
+    if(_id.length>0){
+        axios.put(URL_CATEGORY+_id, data)
+        .then(response=>{
+            message.success("Categoría editada!");
+        })
+        .catch(error=>message.error(error));
+    }
+    else{
+        message.error("Error!");
+    }
 }
 
 export function deleteCategory(_id){

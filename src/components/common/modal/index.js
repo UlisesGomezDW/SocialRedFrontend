@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, Modal, Input } from 'antd';
 import { useForm } from './../../../hooks/useForm';
-import {addCategory} from './../../../utils/api/category';
+import {addCategory, updateCategory} from './../../../utils/api/category';
 
 export const AddCategory = ({visible, onVisible}) => {
   const [ formValues, handleInputChange ] = useForm({ name: '', description: ''});
-  const { name, description } = formValues;  
-  
+  const { name, description } = formValues;
+
   return(
     <Modal
         title="Agregar categoría"
@@ -14,7 +14,7 @@ export const AddCategory = ({visible, onVisible}) => {
         onCancel={onVisible}
         footer={[
             <Button key="back" onClick={onVisible}>Cancelar</Button>,
-            <Button key="submit" type="primary" onClick={()=>addCategory(formValues)}>Agregar</Button>
+            <Button key="submit" type="primary" onClick={()=>{addCategory(formValues); onVisible()}}>Agregar</Button>
         ]}
     >
         <Input type="text" name="name" value={name} placeholder="Nombre" onChange={handleInputChange}/>
@@ -24,7 +24,7 @@ export const AddCategory = ({visible, onVisible}) => {
 }
 
 export const UpdateCategory = ({visible, onVisible, values}) => {
-  const [ formValues, handleInputChange ] = useForm(values);
+  const [ formValues, handleInputChange ] = useForm({name: '', description: ''});
   const { name, description } = formValues;
   return(
     <Modal
@@ -33,11 +33,11 @@ export const UpdateCategory = ({visible, onVisible, values}) => {
         onCancel={onVisible}
         footer={[
             <Button key="back" onClick={onVisible}>Cancelar</Button>,
-            <Button key="submit" type="primary" onClick={()=>console.log(formValues)}>Agregar</Button>
+            <Button key="submit" type="primary" onClick={()=>{updateCategory(formValues, values._id); onVisible()}}>Agregar</Button>
         ]}
     >
-        <Input type="text" name="name" value={name} placeholder="Nombre" onChange={handleInputChange}/>
-        <Input type="text" name="description" value={description} placeholder="Descripción" onChange={handleInputChange}/>
+        <Input type="text" name="name" value={name} placeholder={values.name} onChange={handleInputChange}/>
+        <Input type="text" name="description" value={description} placeholder={values.description} onChange={handleInputChange}/>
     </Modal>
   );
 }

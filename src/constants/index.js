@@ -1,2 +1,2 @@
-export let URL_CATEGORY = 'http://localhost:5000/categories/';
-export let URL_POST = 'http://localhost:5000/posts/';
+export let URL_CATEGORY = 'https://frozen-fjord-18489.herokuapp.com/categories/';
+export let URL_POST = 'https://frozen-fjord-18489.herokuapp.com/posts/';

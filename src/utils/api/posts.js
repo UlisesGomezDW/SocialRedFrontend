@@ -2,25 +2,22 @@ import axios from 'axios';
 import {message} from 'antd';
 import {URL_POST} from './../../constants';
 
-export function addPost(data){
-    axios.post(URL_POST, data)
-    .then(response=>{
-        message.success("Publicación agregada!");
-    })
-    .catch(error=>message.error(error));
-}
-
-export function updatePost(data, _id){
-    axios.post(URL_POST+_id, data)
-    .then(response=>{
-        message.success("Publicación actualizada!");
-    })
-    .catch(error=>message.error(error));
+export function addPost(data, id_category){
+    if(id_category.length > 0){
+        axios.post(URL_POST + id_category, data)
+        .then(response=>{
+            message.success("Publicación agregada!");
+        })
+        .catch(error=>message.error(error));
+    }
+    else {
+        message.error("Agrega una categoría");
+    }
 }
 
 export function deletePost(_id){
-    axios.post(URL_POST+_id)
-    .then(response=>{
+    axios.delete(URL_POST+_id)
+    .then(()=>{
         message.success("Publicación eliminada!");
     })
     .catch(error=>message.error(error));

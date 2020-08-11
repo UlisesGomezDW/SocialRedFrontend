@@ -9,7 +9,7 @@ const Home = () => {
   const [visible, setVisible] = useState(false);
   const [visibleUpdate, setVisibleUpdate] = useState({visible: false, values: {}});
   const [data, setData] = useState([]);
-  
+
   useEffect(()=>{
     async function resolvePromise() {
       let response = await getCategories();
@@ -21,7 +21,7 @@ const Home = () => {
   return (
     <div className="home">
       <Button type="primary" onClick={()=>setVisible(!visible)} icon={<PlusCircleOutlined />} shape="round">Agregar</Button>
-      {data.length > 0 ? 
+      {data.length > 0 ?
       <List
         itemLayout="horizontal"
         dataSource={data}
@@ -31,7 +31,7 @@ const Home = () => {
           <Button type="link" key="list-loadmore-delete">eliminar</Button>
         </Confirm>]}>
           <List.Item.Meta
-            avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+            avatar={<Avatar src="https://img5.goodfon.com/wallpaper/nbig/4/42/colorful-lines-figures-fon-linii-figury-krasochnyi-fon.jpg" />}
             title={<a href="https://ant.design">{item.name}</a>}
             description={item.description}
           />
