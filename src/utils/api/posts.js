@@ -28,7 +28,7 @@ export async function getPosts(){
     return response.status === 200 ? response.data : []
 }
 
-export async function getPost(){
-    let response = await axios.get(URL_POST)
+export async function getPost(_id){
+    let response = await axios.get(URL_POST+_id)
     return response.data[0]
 }

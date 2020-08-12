@@ -1,68 +1,116 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Red Social Frontend
+Aplicación frontend para Red Social (MERN Stack).
 
-## Available Scripts
+## Iniciando
+Para poder probar la aplicación web puedes ingresar al siguiente link [Demo](https://rickandmorty-b02c4.web.app/).
 
-In the project directory, you can run:
+O bien, sí es de tu agrado puedes clonar el repositorio a tu computadora personal mediante:
+```bash
+git remote https://github.com/UlisesGomezDW/SocialRedFrontend.git
+```
 
-### `npm start`
+Aclaración: Es importante instalar las dependencias que que utilice para la aplicación. Puedes hacerlo a través de:
+```bash
+npm install
+```
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Para poder ejecutar la aplicación en modo desarrollo puedes escribir el siguiente comando.
+```bash
+npm start
+```
+## Estructura de archivos
+Siendo `./public` la carpeta nativa de React
+Dentro de `./src`, agrupe los archivos lo más ordenado posible.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```bash
+C:.
+│   App.js
+│   index.js
+│   index.scss
+│   serviceWorker.js
+│
+├───components
+│   ├───common
+│   │   ├───confirm
+│   │   │       index.js
+│   │   │
+│   │   ├───modal
+│   │   │       index.js
+│   │   │
+│   │   └───navbar
+│   │           index.js
+│   │
+│   └───views
+│       ├───home
+│       │       index.js
+│       │
+│       └───posts
+│               createPost.js
+│               listPost.js
+│
+├───constants
+│       index.js
+│
+├───hooks
+│       useForm.js
+│
+└───utils
+    ├───api
+    │       category.js
+    │       posts.js
+    │
+    └───upload
+            index.js
+```
 
-### `npm test`
+- components: Carpeta en donde guardo los componentes de la aplicación.
+- constants: Variables constantes.
+- hooks: Hooks personalizados para los componentes.
+- utils: Funciones auxiliares para la aplicación.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Además de los archivos:
+- App.js: El componente padre.
+- index.js: El archivo global de la aplicación que recibe las configuraciones.
+- index.scss: Archivo de estilos globales.
+- ServiceWorker.js: Herramientas para la configuración de una PWA.
 
-### `npm run build`
+## Entorno de trabajo con React
+Para el desarrollo de esta aplicación decidí trabajarlo bajo Functional Components. Pues en mi consideración son muy útiles y reducen algunos fragmentos de código que a la larga puede ser confusos.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Dentro de `./src` hay una carpeta llamada `./components` dentro de este fichero opté por dividirlos en sus categorías correspondientes  `./commom` (Componentes autónomos que cumplen una o más funciones y que a su vez pueden aparecer más de una vez), `./views` (Componentes contenedores y de visualización de una determinada pantalla).
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+## Consultas a la API:
+En la ruta `./src/utils/api/` se encuentran dos archivos para la consulta de la API REST a tráves de su determinado endpoint.
+Puedes ocupar sus metodos disponibles para realizar las acciones que necesites:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `category`:
+```bash
+import {addCategory, getCategory, getCategories, updateCategory, deleteCategory} from './utils/api/category';
+  addCategory(data); // Agrega una categoría (Parámetro requerido)
+  getCategories(): //Obtiene todas las categorías
+  getCategory(_id): //Obtiene una categoría (Parámetro requerido)
+  updateCategory(data, _id); // Modifica una categoría (Parámetros requeridos)
+  deleteCategory(_id); //Elimina una categoría (Parámetro requerido)
+```
+- `posts`:
+```bash
+import {addPost, getPost, getPosts, updatePost, deletePost} from './utils/api/posts';
+  addPost(data, id_category); // Agrega una publicación (Parámetros requeridos)
+  getPosts(): //Obtiene todas las publicaciones
+  getPost(_id): //Obtiene una publicación (Parámetro requerido)
+  updatePost(data, _id); // Modifica una publicación (Parámetros requeridos)
+  deletePost(_id); //Elimina una publicación (Parámetro requerido)
+```
 
-### `npm run eject`
+## Construido con:
+- React
+- SASS
+- Ant Design
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Deployment
+La aplicación actualmente está siendo ejecutada bajo el servicio de GitHub Pages y esta disponible en: https://ulisesgomezdw.github.io/SocialRedFrontend/
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Integración Continua
+Para este proyecto, decidí usar TRAVIS como servicio de integración continua. La configuración puede verse en `./travis.yml`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
