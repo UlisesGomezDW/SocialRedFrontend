@@ -2,7 +2,7 @@
 Aplicación frontend para Red Social (MERN Stack).
 
 ## Iniciando
-Para poder probar la aplicación web puedes ingresar al siguiente link [Demo](https://rickandmorty-b02c4.web.app/).
+Para poder probar la aplicación web puedes ingresar al siguiente link [Demo](https://red-social-app.web.app/).
 
 O bien, sí es de tu agrado puedes clonar el repositorio a tu computadora personal mediante:
 ```bash
@@ -108,9 +108,6 @@ import {addPost, getPost, getPosts, updatePost, deletePost} from './utils/api/po
 - Ant Design
 
 ## Deployment
-La aplicación actualmente está siendo ejecutada bajo el servicio de GitHub Pages y esta disponible en: https://ulisesgomezdw.github.io/SocialRedFrontend/
-
-## Integración Continua
-Para este proyecto, decidí usar TRAVIS como servicio de integración continua. La configuración puede verse en `./travis.yml`
+La aplicación actualmente está siendo ejecutada bajo el servicio de Firebase y esta disponible en: https://red-social-app.web.app/
 
 
